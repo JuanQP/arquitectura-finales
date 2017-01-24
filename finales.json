@@ -1,0 +1,97 @@
+{
+    "finales": [
+        {
+            "nombre": "Final 01/12/2016",
+            "preguntas": [
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "¿Desde qué lugar se extraen los valores que permiten la restauración de los registros de CPU para una tarea entrante?",
+                    "respuesta": "Estructura de Datos de Pila<br>Pila<br>Stack"
+                },
+                {
+                    "pregunta": "Nombre dos registros de CPU que se utilicen en el campo desplazamiento de una dirección virtual.",
+                    "respuesta": "Las instrucciones <code>EIP</code> y <code>ESP</code>",
+                    "explicacion": "Recordemos que son los <strong>punteros</strong> (esa palabra debería darnos una pista de que sirven para hacer desplazamientos) de instrución, y el puntero de stack."
+                },
+                {
+                    "pregunta": "¿Cuál es la finalidad de los registros 'SI' y 'DI' en modo real?",
+                    "respuesta": "Se utilizan en direccionamiento indexado.<br>Sirven para trabajar con cadenas de caracteres."
+                },
+                {
+                    "pregunta": "¿A qué hace referencia el concepto MODO directo por registro o de registro?",
+                    "respuesta": "Es el modo de direccionamiento en el cual el operando (<em>el valor que se pasa a una instrucción</em>) se aloja en un registro de la CPU.",
+                    "explicacion": "Cuando usamos por ejemplo <code>MOV AX, BX</code>, estamos utilizando datos de <code>BX</code> que se encuentran en un registro, no estamos accediendo a memoria."
+                },
+                {
+                    "pregunta": "Si el campo EDATA de una instrucción de 32 bits aloja un dato (modo inmediato) ¿Cuál es su valor máximo entero? Escríbalo en hexadecimal o en potencias de 2.",
+                    "respuesta": "2^(Cantidad de bits - 1) entonces 2^(32) - 1",
+                    "explicacion": "Nos está diciendo que el campo tiene 32 bits y que tiene el valor en la instrucción misma (modo inmediato). Entonces simplemente tenemos que responder cuál es el valor máximo que se puede lograr con 32 bits o sea <code>FF FF FF FF</code>."
+                },
+                {
+                    "pregunta": "¿Qué es un hercio o Hz?",
+                    "respuesta": "Es una medida de frecuencia, representa los <strong>ciclos por segundo</strong> de un CPU."
+                },
+                {
+                    "pregunta": "Cómo se denomina la señal que indica la solicitud de atención por parte de un dispositivo externo?",
+                    "respuesta": "La señal <code>INTR</code>.",
+                    "explicacion": "No confundir con <code>INTO</code>, o <code>INT n</code> que son instrucciones de interrupción que puede activar un programador."
+                },
+                {
+                    "pregunta": "¿Cómo clasificaría una interrupción producida por una división por cero?",
+                    "respuesta": "Excepción."
+                },
+                {
+                    "pregunta": "Sabiendo que la dirección física de la última posición de una memoria es <code>FF FF FF FF</code><br>¿Cuál es el valor de <code>m</code> de esa memoria si es direccionable al octeto? (O dicho de otra manera de m X 8)",
+                    "respuesta": "m = 4G de posiciones"
+                },
+                {
+                    "pregunta": "Indique el correspondiente rango de direcciones.",
+                    "respuesta": "[0, 2^{32}-1]",
+                    "explicacion": "Desde qué número a qué número pueden ser esas posiciones."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Para la línea de código presentada a continuación y considerando un contexto en modo real (o modo 16 bits)<br><code>3BB0:0103 MOV AX, [35B0]</code><br>Si el valor del DS es <code>AB55</code>, ¿Cuál es la dirección física del operando involucrado en ésta instrucción?",
+                    "respuesta": "AEB00",
+                    "explicacion": "Recordar que la expresión <code>[35B0]</code> significa 'el contenido de la posición...', y como acá dice que la posición de <code>DS</code> es <code>AB55</code>, hay que aplicar la formulita para obtener la dirección física (la dirección lógica sería <code>AB55:35B0</code>, y la física es la que resulta de aplicar <code>(AB55 x 10) + 35B0</code>, con lo cual al multiplicar tendríamos <code>AB550 + 35B0</code> y finalmente <code>AEB00</code>)."
+                },
+                {
+                    "pregunta": "Si el valor del <code>SS</code> es <code>3700</code> y el valor del <code>SP</code> es <code>FFFE</code>, ¿Cuál será la dirección segmentada asociada al byte vacío de la pila luego de una instrucción <code>PUSH</code>?",
+                    "respuesta": "<code>3700:FFFC</code>",
+                    "explicacion": "Previo al <code>PUSH</code> tenemos que la dirección segmentada a la que apunta la pila es <code>SS:SP</code> (Segmento de Pila : Puntero de Pila), o sea <code>3700:FFFE</code>. Hay que recordar que cuando hacemos <code>PUSH</code> el puntero <strong>decrementa</strong> (si, una locura), y cuando hacemos <code>POP</code> el puntero <strong>incrementa</strong>. Estas variaciones las hace de a 2 bytes. Así que el puntero que ahora vale <code>FFFE</code>, luego de un <code>PUSH</code> decrementaría 2 bytes hasta valer <code>FFFC</code>. Entonces, ya podemos mostrar la dirección segmentada <code>SS:SP</code> que sería <code>3700:FFFC</code>."
+                },
+                {
+                    "pregunta": "Si la instrucción siguiente a la descripta se aloja en la dirección física <code>3BC07</code>, ¿Cuál es el tamaño de la instrucción y cuántos bytes le corresponden al código de operación?",
+                    "respuesta": "4 bytes de instrucción, en los que 2bytes de código de operación y 2 bytes del campo de referencia al dato <code>35B0</code>",
+                    "explicacion": "Primero deberíamos ver cuál es la dirección física de dicha instrucción, la cual sabiendo que tenemos <code>3BB0:0103</code>, obtenemos que es <code>3BB0 x 10 + 0103 = 3BC03</code>. Como la pregunta dice que la próxima instrucción está en <code>3BC07</code>, y esta instrucción arrancaba en <code>3BC03</code>, significa que hay <code>4 bytes</code> de diferencia (o sea que esta instrucción ocupa 4 bytes en memoria). Lo siguiente no es tan obvio, pero hay que razonarlo: como estamos pasando un número a esta instrucción, el número <code>35B0</code>, que ocupa 2 bytes, nos quedan solo 2 bytes que tienen que ser lo que ocupa el código de instrucción."
+                },
+                {
+                    "pregunta": "Un proceso que se ejecuta en un sistema con memoria virtual puramente segmentada tiene un primer segmento de código de 4096 bytes. ¿Cuál es el valor del campo límite del correspondiente descriptor de segmento?",
+                    "respuesta": "01000(16) = 0000 0001 0000 0000 0000(2)",
+                    "explicacion": "Recordemos que el campo límite son 20 bits que definen qué tan largo es un segmento. Si este segmento tiene 4096 bytes, entonces el campo límite de este segmento debería tener el valor 4096 en binario."
+                },
+                {
+                    "pregunta": "¿Qué valor tiene el bit <code>P</code> de presencia cuando la CPU está ejecutando la tercera instrucción?",
+                    "respuesta": "P=1",
+                    "explicacion": "El bit de presencia es un flag que está en 1 cuando un segmento está cargado en memoria. El hecho de que se esté <em>ejecutando una instrucción</em> de dicho segmento, implica que tiene que estar cargado en memoria. El hecho de haber puesto 'tercera instrucción', es simplemente para despistar."
+                },
+                {
+                    "pregunta": "Si el valor del campo base correspondiente al mismo descriptor expresado en hexadecimal es <code>00 00 10 00</code>, ¿Cuál es la dirección física que correspondería al último byte del segmento?",
+                    "respuesta": "00 00 1F FF",
+                    "explicacion": "El campo base son 32 bits que definen en qué posición empieza un segmento. Si el segmento empieza en <code>00 00 10 00</code>, y el tamaño dijimos que era <code>0 10 00</code>, entonces <code>00 00 10 00 + 0 10 00 = 00 00 20 00</code>. Este <code>00 00 20 00</code> sería donde empieza el <strong>próximo segmento</strong>, por lo cual, el <strong>último byte del segmento que estamos calculando</strong> sería el byte previo a ése, es decir: <code>00 00 1F FF</code>."
+                }
+            ]
+        },
+
+        {
+            "nombre": "Final 06/10/2016",
+            "preguntas": []
+        }
+    ]
+}
