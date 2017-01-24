@@ -91,7 +91,91 @@
 
         {
             "nombre": "Final 06/10/2016",
-            "preguntas": []
+            "preguntas": [
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "¿Cómo se denomina la estructura de datos que se utiliza en determinadas ocasiones, para resguardar el contenido de los registros de CPU?",
+                    "respuesta": "Pila o Stack."
+                },
+                {
+                    "pregunta": "¿Cuál es el nombre genérico de la técnica para actualizar la memoria principal desde caché? ¿Cuál es la denominación particular cuando se escribe en MP al mismo tiempo que en caché?",
+                    "respuesta": "El nombre de técnica para actualizar la memoria principal desde caché se denomina <strong>Política de Escritura</strong> (puede ser una de varias).<br>La técnica en particular para escribir en MP (memoria principal) al mismo tiempo que en caché es <strong>Escritura Inmediata</strong>"
+                },
+                {
+                    "pregunta": "¿Cuál es la finalidad de los 'registros de segmento' en modo real y en modo protegido?",
+                    "respuesta": "En modo real contiene la base de alguna estructura de datos (como por ejemplo CS, SS, ó DS, entre otros). En modo protegido contiene el selector de dichos segmentos."
+                },
+                {
+                    "pregunta": "¿Cómo se denomina el registro que actúa como 'contador de programa' o 'puntero de instrucción'? ¿De cuántos bits puede constar?",
+                    "respuesta": "Se llama <strong>Instruction Pointer (IP)</strong> y consta de 16 bits cuando se usa el registro <code>IP</code> o puede tener 32 bits cuando se usa el registro <code>EIP</code>."
+                },
+                {
+                    "pregunta": "¿Dónde se encuentra el operando cuando se utiliza direccionamiento inmediato?",
+                    "respuesta": "En la misma instrucción.<br>También es válido decir 'en el campo DATA'."
+                },
+                {
+                    "pregunta": "¿Qué es el Buffer de Traducción Anticipada y qué información se guarda en este dispositivo?",
+                    "respuesta": "Es una memoria de capacidad reducida que guarda la dirección lineal y la dirección física de las últimas 32 páginas de código accedidas dentro de un microprocesador."
+                },
+                {
+                    "pregunta": "¿En qué unidad se mide el ciclo completo de una instrucción?",
+                    "respuesta": "En ciclos de reloj, en hertz, en hz..."
+                },
+                {
+                    "pregunta": "¿Cómo se denomina la señal de respuesta de la CPU a la solicitud de atención por parte de un dispositivo externo? ¿Qué módulo especial gestiona las señales provenientes del entorno de dispositivos?",
+                    "respuesta": "La señal es <code>INTA</code> (Interruption Acknowledge). Las gestiona el módulo APIC."
+                },
+                {
+                    "pregunta": "¿Cómo se denomina el parámetro que indica la cantidad de bits que se transmiten por unidad de tiempo a través de un bus y en qué unidades se mide?",
+                    "respuesta": "Velocidad de transferencia. Se mide en Megabit/s o Gigabit/s"
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Sabiendo que una CPU genera una dirección de 34 bits que permiten acceder a la memoria principal.<br>¿Cuál es el tamaño potencial de la memoria principal?",
+                    "respuesta": "16GB",
+                    "explicacion": "Podemos razonarlo de esta forma: Si las viejas máquinas de 32 bits permitían direccionar 4GB, entonces con un bit más (33 bits) podrían hacer 8GB, y entonces con otro bit más (34 bits) podrían hacer 16GB."
+                },
+                {
+                    "pregunta": "¿Cuántos bits son significativos para direccionar una memoria DRAM de 8 Gigabytes?",
+                    "respuesta": "33 bits.",
+                    "explicación": "Tener en cuenta la explicación de la respuesta anterior."
+                },
+                {
+                    "pregunta": "Si el total de los 8 Giga están distribuidos en cuatro placas de 8 chips cada una ¿Cómo esta armada la matriz de mX8 en cada chip y cual es la capacidad de cada uno?",
+                    "respuesta": "La matriz sería de 256MX8 y tendría una capacidad de 256MB cada una.",
+                    "explicacion": "La capacidad es una cuenta matemática (8GB dividida en 4 placas da 2GB, y dice que cada placa tiene 8chips, entonce 2GB / 8 chips = 256MB).<br>La matriz de MX8 es la cantidad de <em>bloquecitos de 1 byte</em> que pueden haber."
+                },
+                {
+                    "pregunta": "Un proceso que se ejecuta en un sistema con memoria virtual puramente segmentada tiene un primer segmento de código de 4096 bytes. ¿Cuánto vale el campo el campo P de presencia cuando el programa está ejecutando la tercera instrucción?",
+                    "respuesta": "El flag estaría <code>P=1</code>",
+                    "explicacion": "El <strong>bit de presencia</strong> indica que un segmento está cargado en memoria. Como el enunciado dice que se está ejecutando una instrucción (no importa si es la tercera), significa que debería estar cargado en memoria."
+                },
+                {
+                    "pregunta": "¿Qué valor de la entidad “selector” de la dirección virtual permite acceder al segmento?",
+                    "respuesta": "El Indice de Tabla (o TI), bit 2 del selector que esté en 0, indicando que la Tabla de Descriptores es Local."
+                },
+                {
+                    "pregunta": "¿Qué valor tiene el bit G de Granularidad?",
+                    "respuesta": "El flag estaría en <code>G=0</code>",
+                    "explicacion": "El <strong>flag de granularidad</strong> indica si el tamaño de los segmentos están en bytes ó en megabytes. Como el enunciado mismo decía que el segmento era de 4096bytes, entonces el flag G debería estar en 0."
+                },
+                {
+                    "pregunta": "Si la base alojada en su descriptor y expresada en hexadecimal es <code>32 42 70 00</code>. ¿Cuál es la dirección física que correspondería al último byte del segmento?",
+                    "respuesta": "<code>32 42 7F FF</code>",
+                    "explicacion": "Si el tamaño del segmento es de 4096 bytes (lo decía el enunciado), significa que el campo que indica el tamaño de segmento (20 bits) debe ser <code>01000</code> (en hexadecimal). La técnica que podemos usar para saber cuál es el último byte, es sumar el tamaño de segmento, con la base (<code>32 42 70 00 + 0 10 00 = 32 42 80 00</code>), lo cual nos da <strong>el primer byte del segmento próximo</strong>. Si restamos 1 a ese resultado, nos daría el último byte del segmento que estábamos calculando: <code>32 42 7F FF</code>."
+                },
+                {
+                    "pregunta": "Para la línea de código presentada a continuación<br><code>AB55:0103 MOV AX, [AAAA]</code><br>Si la instrucción siguiente a la descripta se aloja en la dirección física <code>AB656</code>, ¿Cuál es el tamaño de la instrucción y cuántos bytes le corresponden al código de operación?",
+                    "respuesta": "3 bytes: 2 para el operando <code>AAAA</code> y el restante para el código de operación.",
+                    "explicacion": "Calculamos la dirección física primero de lo que tenemos <code>AB55 x 10 + 0103 = AB653</code>. Si la próxima instrucción va a estar en <code>AB656</code>, significa que hay 3 bytes de diferencia. Como vemos que en la instrucción se están usando 2 bytes para representar el dato <code>AAAA</code>, sólo nos queda concluir que el byte restante es el <strong>código de operación</strong>."
+                }
+            ]
         }
     ]
 }
