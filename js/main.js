@@ -30,7 +30,9 @@ function ponerPregunta(selector, pregunta, numero)
             <div class="col-md-11">
                 <p class="lead">${pregunta.pregunta}</p>
                 <div class="collapse" id="${numero}">
-                    <div class="alert alert-info" role="alert"><p><strong>Respuesta: </strong>${pregunta.respuesta}</p> ${pregunta.explicacion ? `<p><strong>Explicación: </strong>${pregunta.explicacion}</p>` : ''}</div>
+                    <div class="alert alert-${pregunta.revision ? 'warning' : 'info'}" role="alert">
+                    ${pregunta.revision ? '<span class="glyphicon glyphicon-exclamation-sign"></span><strong> En revisión</strong>: Esta pregunta podría no estar 100% correcta.' : ''}
+                    <p><strong>Respuesta: </strong>${pregunta.respuesta}</p> ${pregunta.explicacion ? `<p><strong>Explicación: </strong>${pregunta.explicacion}</p>` : ''}</div>
                 </div>
             </div>
         </div>`)

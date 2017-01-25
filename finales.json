@@ -179,6 +179,114 @@
         },
 
         {
+            "nombre": "Final 26/07/2016",
+            "preguntas": [
+
+            ]
+        },
+
+        {
+            "nombre": "Final 09/12/2015",
+            "preguntas": [
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Para la siguiente sentencia VECTOR(I)=3 indique por lo menos 2 registros de CPU que podrían estar implicados en el modo de direccionamiento de su correspondiente código máquina",
+                    "respuesta": "<code>DS</code> (Segmento de Datos) y <code>SI</code> (Segmento de Índices)",
+                    "explicacion": "El registro <code>SI</code> se utiliza para índices. Es probable que para apuntar a valores dentro de un vector sean necesarios los registros <code>DS</code> (segmento de datos) y un desplazamiento dado por <code>SI</code>."
+                },
+                {
+                    "pregunta": "Un registro de 32 bits almacena la siguiente información representada en hexadecimal <code>80 AA 23 BB</code>. Represéntela si es posible en notación Little-Endian, en caso contrario, indique su valor decimal considerando que representa información signada.",
+                    "respuesta": "En Little-Endian es <code>BB 23 AA 80</code>."
+                },
+                {
+                    "pregunta": "¿Qué significa DRAM? Indique la ventaja o desventaja respecto de la memoria SRAM en relación a su capacidad de almacenamiento.",
+                    "respuesta": "Significa <strong>Dynamic Random Access Memory</strong> y su ventaja es que pueden almacenar mucha más información que las SRAM."
+                },
+                {
+                    "pregunta": "¿Cómo se denomina a la división lógica asociada a un disco magnético que establece la mínima cantidad de bytes que se acceden para leer o escribir?",
+                    "respuesta": "Clúster"
+                },
+                {
+                    "pregunta": "Nombre dos instrucciones assembler asociadas a CONSULTA de banderas. Nombre dos instrucciones que MODIFIQUEN banderas.",
+                    "respuesta": "Consulta: <code>JZ</code> (salta a una instrucción si el flag Z es 0) y <code>JC</code> (salta a una instrucción si el flag de Carry es 1)<br>Modificación: <code>CLC</code> (clear carry, deja en 0 el flag de carry), <code>ADD</code> (al finalizar la suma actualiza varios flags como Z para saber si el resultado fue 0, o V para saber si hubo overflow)."
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Hay alguna consideración que contemplar antes de sustituir una página almacenada en RAM cuyo contenido es CODIGO? Justifique.",
+                    "respuesta": "Que no sea el código en ejecución. Porque no habría forma de saber cuál es la próxima instrucción."
+                },
+                {
+                    "pregunta": "Durante la traducción de una dirección virtual a dirección física, la unidad de segmentación detecta que el valor del desplazamiento supera el campo límite del descriptor de segmento. ¿Qué ocurre entonces?",
+                    "respuesta": "Falla de Segmentación ó <samp>SEGMENTATION FAULT</samp>."
+                },
+                {
+                    "pregunta": "¿En cuántos frames queda dividida una memoria de 1GB si el tamaño de una página es de 4KB?",
+                    "respuesta": "En 256K de páginas.",
+                    "explicacion": "Si pagamos los GB a KB nos da 1.048.576KB, y si estos KB los dividimos por 4KB, nos da 262144 frames. O más simple: 256K de frames."
+                },
+                {
+                    "pregunta": "¿Cómo se denomina el bloque de lógica que permite encauzar la información de una única vía de entrada en 2^n líneas de salida?",
+                    "respuesta": "Demultiplexor",
+                    "explicacion": "Una forma de recordar memotécnicamente ésto es que acá hablamos de una vía sola, que se 'separa' en muchas (de-multiplexar, vendría a ser algo así como <em>separar</em> o <em>ramificar</em>)."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Observe el contetnido de los siguientes registros de CPU y responda las consignas<br> <code>CX=000A BX=0B0A IP=0008 CS=0032 SS=0090 SP=4532</code><br> ¿Cuál es el valor del registro <code>CX</code> luego de la ejecución de una instrucción <code>SAR CL</code>?",
+                    "respuesta": "<code>00 05</code>, no afecta ninguna bandera.",
+                    "explicacion": "<code>SAR</code> es <em>Shift Arithmetic Right</em>, o <em>Desplazamiento Aritmético a Derecha</em>. Lo que hace es mover todos los bits a la derecha a excepción del bit más significativo (o sea, el que está más a la izquierda, lo deja intacto). Si hubiese un número en el bit menos significativo (el que está más a la derecha) lo pone en el flag de carry. Pero también hay que tener en cuenta que <code>SAR</code> no lo está aplicando en el registro <code>CX</code> si no en <code>CL</code> (es decir en la parte baja, o últimos 2 bytes). Por lo cual el número que vamos a operar es <code>0A = 0000 1010</code>. Si movemos todos los bits a la derecha, nos queda <code>0000 0101</code>, y como antes de la operación, el menos significativo era <code>0</code>, entonces no se modifica el flag de carry."
+                },
+                {
+                    "pregunta": "Si este es el estado de los registros de CPU en un momento dado, ¿Cuál es el valor de la dirección segmentada que apunta al byte vacío de la pila?",
+                    "respuesta": "La dirección segmentada que apunta al byte vacío de la pila es <code>0090:4532</code>.",
+                    "explicacion": "Recordemos que el Stack Pointer siempre apunta al byte vacío de la pila, y que la forma de dirección segmentada es <code>Base del Segmento : Desplazamiento</code>, que para el caso particular de la Pila (o Stack) son los registros <code>SS</code> y <code>SP</code>, así que el valor sería <code>SS:SP</code>, entonces en este caso <code>0090:4535</code>."
+                },
+                {
+                    "pregunta": "Si consideramos datos enteros signados para <code>BX</code> y <code>CX</code>, ¿Cuál es el valor final de <code>BX</code> luego de la ejecución de la instrucción <code>SUB BX, CX</code>?",
+                    "respuesta": "<code>BX=0B00</code>",
+                    "explicacion": "La instrucción <code>SUB</code> resta el primer registro con el segundo y guarda el resultado en el primer registro. Para este caso tenemos los valores de <code>BX=0B0A CX=000A</code> entonces la resta es <code>0B0A - 000A = 0B00</code>."
+                },
+                {
+                    "pregunta": "Considerando el valor actual del registro <code>CX</code> indique cuántas veces la instrucción <code>LOOP</code> decrementa el registro hasta que se sale de la estructura repetitiva.",
+                    "respuesta": "10 veces.",
+                    "explicacion": "Recordemos que <code>LOOP</code> funciona como <code>JMP</code> (salta a una instrucción), pero, primero se fija si <code>CX</code> es mayor que 0. Si es así, lo decrementa en 1, y luego salta. Si es 0, no salta. Es importante recordar que a ese registro se le llama Registro Contador, quizás eso sea una buena pista para recordarnos que tiene este vínculo con <code>LOOP</code>."
+                },
+                {
+                    "pregunta": "Represente el número +1 en enteros signados formato palabra, y en punto flotante de precisión simple. En ambos casos exprese su respuesta en hexadecimal.",
+                    "respuesta": "Entero Signado (Formato Palabra): <samp>00 01</samp><br>Punto Flotante de Precisión Simple: Es 1x10^0 entonces <code>3F 80 00 00</code>",
+                    "explicacion": "El formato palabra es con 2 bytes. Así que el número 1 positivo lo representamos <samp>00 01</samp> (es un 1, con muchos 0 adelante).<br> Para el otro formato, que es también conocido como Exceso-127, utiliza 4 bytes. Lo que tenemos que hacer es primero expresarlo como notación científica <samp>1x10^0</samp>. Con esto ya podemos ver el exponente (0), y su mantisa (en este caso también 0, porque es un número entero). Recordamos que el formato de Exceso-127 es:<br> Primer bit es de signo, los próximos 8 bits son la característica, y el resto de los bits son la mantisa.<br> Calculamos la característica con su fórmula <samp>Característica = Exponente + 127</samp>, lo cual da <samp>Característica = 127 = 0111 1111</samp>.<br> Entonces tenemos primer bit <samp>0</samp>, luego viene <samp>0111 1111</samp> y luego la mantisa que serían 23 bits en <samp>0</samp>. Con lo cual queda <code>0011 1111 1000 0000 0000 0000 0000 0000</code> o más lindo de expresar en hexa <code>3F 80 00 00</code>."
+                },
+                {
+                    "pregunta": "Para la línea de código presentada a continuación<br> <code>AB55:0103 INT 2</code> // Se genera el código máquina <code>CD02</code><br> ¿Con qué asocia el número (en este ejemplo el 2) en relación a la IDT o Tabla de Vectores de Interrupción? Infiera el código de instrucción para la interrupción <code>INT 3</code>",
+                    "respuesta": "Es el índice en el que se encuentra la entrada para tratar esta interrupción en la IDT.<br> El código para <code>INT 3</code> es <code>CD03</code>.",
+                    "explicacion": "La IDT es una tabla (o vector) cuyas entradas tienen el tratamiento para determinadas interrupciones. Si se usa el valor 2, entonces usará la entrada 2 de dicho vector para tratar la interrupción. en el código máquina generado <code>CD02</code> es de esperar que el último byte <samp>02</samp> sea el número que estamos usando en la instrucción, de lo que se deduce que <samp>CD</samp> parece ser el código de operación. Por lo cual es de imaginar que para <code>INT 3</code> el código máquina va a ser <code>CD03</code> (código de operación y el número 3)."
+                },
+                {
+                    "pregunta": "Exprese verbalmente (no numéricamente) a qué dirección se salta debido a la ejecución de esta instrucción.",
+                    "respuesta": "<em>Aclaración: No queda claro si se refiere a qué instrucción se ejecuta en ese momento, o al volver de la rutina de interrupción.</em><br> Si es al volver de la rutina de interrupción: A la instrucción siguiente. <br> Si es al ejecutarse esa instrucción: A la rutina de tratamiento de esta interrupción que esté determinada por la IDT."
+                },
+                {
+                    "pregunta": "Relacionando la cantidad de bytes del código de máquina de ésta instrucción indique la dirección segmentada de la instrucción a la que se retorna luego de la ejecución del <code>IRET</code>.",
+                    "respuesta": "<code>AB55:0105</code>",
+                    "explicacion": "La instrucción ocupa 2 bytes (es el código máquina generado), y como vemos que el Puntero de Instrucción vale <samp>0103</samp>, entonces, al sumarle 2 nos da que el Puntero de Instrucción ahora vale <samp>0105</samp>. Así que si lo expresamos como dirección segmentada nos queda <code>CS:IP</code> el cual para este caso es <code>AB55:0105</code>."
+                }
+            ]
+        },
+
+        {
+            "nombre": "Final 28/07/2015",
+            "preguntas": [
+
+            ]
+        },
+
+        {
             "nombre": "Final 14/07/2015",
             "preguntas": [
                 {
