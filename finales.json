@@ -458,7 +458,96 @@
         {
             "nombre": "Final 28/07/2015",
             "preguntas": [
-
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "¿Cómo se denomina la estructura de dato en cuyos elementos se puede encontrar el puntero al driver de dispositivo?",
+                    "respuesta": "Tabla de Vectores de Interrupción",
+                    "explicacion": "Para hacer uso de algún dispositivo de E/S (como usar un driver), el programa en ejecución debe hacer una interrupción de software con la instrucción <code>INT #</code> donde # es el número de interrupción que está asociada a dicho servicio de E/S. Fuente: Unidad 8.9 del Libro de Quiroga (Página 192)."
+                },
+                {
+                    "pregunta": "¿Cuál es la finalidad de los registros base en modo real y protegido?",
+                    "respuesta": "Sirve para direccionamiento dentro de un segmento.",
+                    "explicacion": "Recordemos que si bien el direccionamiento físico está dado por <samp>Dirección de Segmento + Desplazamiento</samp>, también se le pueden agregar dos elementos más <samp>Dirección de Segmento + Dirección Base + Índice + Desplazamiento</samp>. El registro <samp>BX</samp> (registro base) en este caso sirve para direccionamiento base <em>dentro de un segmento</em>.<br> Fuente: Libro de Quiroga Unidad 8.6.1.5 'Relación entre los registros y el modo de direccionamiento a datos' (Página 187)"
+                },
+                {
+                    "pregunta": "¿Cuál es el criterio que sustenta la alta probabilidad de acierto de una instrucción en caché basado en la probabilidad de que la próxima instrucción a ejecutarse es gemeralmente la siguiente?",
+                    "respuesta": "Vecindad Temporal y Espacial."
+                },
+                {
+                    "pregunta": "Indique una unidad del procesador asociada a la operatoria de un número real. Indique por lo menos una de sus posibles condiciones de error.",
+                    "respuesta": "FPU (Unidad de Punto Flotante), puede provocarse un overflow o underflow."
+                },
+                {
+                    "pregunta": "Memoria ultrarrápida que guarda las direcciones de las últimas 32 páginas de código accedidas.",
+                    "respuesta": "TLB (Buffer de Traducción Anticipada)"
+                },
+                {
+                    "pregunta": "Método de escritura desde caché que actuliza la información cuando el bus está disponible.",
+                    "respuesta": "Escritura Diferida"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Indique cuatro datos que deben almacenarse en un disco relacionados con la administración del sistema de archivos y que en general se encuentra en el sector de arranque.",
+                    "respuesta": ""
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿En qué TIPO/S de segmento/S tiene sentido el atributo que determina que debe ser escrito antes de ser sustituído?",
+                    "respuesta": "Segmentos de Código que están en ejecución.",
+                    "explicacion": ""
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Término usual (en inglés) del tiempo de cambio de cabeza lectora o grabadora en un disco de HDD",
+                    "respuesta": ""
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Sabiendo que una instrucción tiene un campo de referencia a memoria de 64bits... ¿Cuántos bits deben tener los registros de cálculo si se admite el modo de direccionamiento inmediato? ¿Por qué?",
+                    "respuesta": ""
+                },
+                {
+                    "pregunta": "¿A cuántas direcciones de memoria se puede referenciar? ¿Cuál es el rango de direcciones expresado en potencias de 2?",
+                    "respuesta": "Con 64 bits podemos referenciar a 2^64 direcciones y el rango es [0; +2^(64) - 1]"
+                },
+                {
+                    "pregunta": "¿Cuántas direcciones de memoria determina? (Expresados en Giga y Tera)",
+                    "respuesta": "2^34 Gigas y 2^24 Teras.",
+                    "explicacion": "Como tenemos 2^64, y sabemos que con 30 bits tenemos 1GB, podemos dividirlo para tenerlo expresado en Gigas <samp>(2^64) / (2^30) = (2^34) Gigas</samp>. <br> Un Tera se expresa como 2^40, así que aplicando el mismo razonamieno obtenemos: <samp>(2^64) / (2^40) = (2^24) Teras</samp>."
+                },
+                {
+                    "pregunta": "Un proceso se ejecuta en un sistema con memoria virtual con segmentos. ¿Cuántas páginas utiliza si el segmento de código es de 8193 bytes, el de datos es de 1125 bytes y la estructura de pila está definida como de 64 bytes?",
+                    "respuesta": "3,1,1 [Páginas]",
+                    "explicacion": "<a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-aporte-final-arquitectura-de-computadore-28-07-2015?pid=438218#pid438218\">Fuente</a>"
+                },
+                {
+                    "pregunta": "¿Cuántos KBytes ocupa la imagen virtual?",
+                    "respuesta": "20 KB"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Qué atributos del segmento indican que está paginado, que fue modificado, que es de dato y que es de pila? (No exprese las siglas si no los términos que representan)",
+                    "respuesta": ""
+                },
+                {
+                    "pregunta": "Si se han cargado en el área local el segundo segmento de código, el de datos y la pila, ¿Cuánta memoria se ocupó?",
+                    "respuesta": "12288 bytes ó 12 kilobytes"
+                },
+                {
+                    "pregunta": "Indique las instrucciones de transferencia de control para un salto incondicional, una interrupción, un salto a procedimiento (el punto es válido si están todas las instrucciones necesarias).",
+                    "respuesta": "<code>JMP</code>, <code>INT n</code> y <code>CALL</code>"
+                },
+                {
+                    "pregunta": "Indique a qué instrucción se vuelve luego de una excepción de tipo Trampa y Falta (Con evento recuperable).",
+                    "respuesta": "Cuando es Trampa a la siguiente instrucción. Cuando es Falta a la misma instrucción."
+                }
             ]
         },
 
