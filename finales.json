@@ -183,6 +183,96 @@
             "preguntas": [
                 {
                     "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "Con dos o tres palabras como máximo indique qué es un elemento de un vector de interrupciones (considérelo en modo real)",
+                    "respuesta": "Una Dirección Segmentada (CS:IP)",
+                    "explicacion": "En <strong>modo real</strong> las entradas del IDT (Tabla de Descriptores de Interrupción), poseen un CS y un IP que es el que va a determinar dónde está la rutina correspondiente a la interrupción que se produjo. En <strong>modo protegido</strong>, sin embargo, cada entrada es un descriptor de puerta que permite acceder al segmento donde se encuentra la rutina."
+                },
+                {
+                    "pregunta": "¿Cuál es la relación entre el valor numérico asociado a dicho elemento y la interrupción o excepción?",
+                    "respuesta": "Permite encontrar en el vector de interrupciones, la rutina especifica para esta excepción o interrupción."
+                },
+                {
+                    "pregunta": "¿En qué dirección de memoria se almacena el primer byte de la IDT en modo real y qué registro apunta a dicha tabla en modo protegido?",
+                    "respuesta": "En modo protegido es el IDTR (Registro de Tabla de Descriptores de Interrupción) el que apunta a dicha tabla. En modo real se ubica en el primer KB de la RAM, y el primer byte es 00 00 00 (Hexa).<br> <a class=\"btn btn-success\" href=\"https://www.tutorialspoint.com/microprocessor/microprocessor_8086_interrupts.htm\">Fuente</a>"
+                },
+                {
+                    "pregunta": "¿Qué instrucciones assembler conoce que permitan desplazar a derecha bits en un registro?",
+                    "respuesta": "<code>SAR</code> y <code>SHR</code>"
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Verdadero o Falso"
+                },
+                {
+                    "pregunta": "En un modo de direccionamiento directo para obtener el dato se accede a memoria una sola vez.",
+                    "respuesta": "Verdadero.",
+                    "explicacion": "Necesita ir a memoria y traer un dato para luego operarlo."
+                },
+                {
+                    "pregunta": "El rango de direcciones de 16 bits es (-32768. +32767).",
+                    "respuesta": "Falso. El rango de direcciones de 16 bits es (0; 65535).",
+                    "explicacion": "Si bien el rango de valores es 65536 valores distintos, la pregunta es por las direcciones posibles, es decir, los números de 0 a 2^(n)-1."
+                },
+                {
+                    "revision": true,
+                    "pregunta": "En una instrucción de una dirección un campo es el código de operación y el otro la referencia al dato (también puede ser el dato en modo de direccionamiento inmediato)",
+                    "respuesta": "Falso. No necesariamente es <strong>una referencia</strong> a un dato. Al hacer <code>JMP 10000h</code>, utiliza la dirección para posicionarse en una cierta posición de memoria, pero no está yendo a buscar ningún dato."
+                },
+                {
+                    "pregunta": "Una instrucción con formato <code>mnemónico reg, mem</code> es una instrucción que requiere un acceso a memoria principal.",
+                    "respuesta": "Falso.",
+                    "explicacion": "Si el dato referenciado por <code>mem</code> está en la caché, no haría falta que acceda a memoria principal."
+                },
+                {
+                    "pregunta": "La frecuencia indica la cantidad de ciclos por segundo y la unidad que la representa es el Hz.",
+                    "respuesta": "Verdadero."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Una memoria principal de 4MBytes opera con una caché de 64K líneas de 8 bytes cada una y utiliza correspondencia directa (asociativa de 1 vía).<br> ¿Qué estructura de parámetros en la dirección física interpretada por el controlador de caché le permite el acceso a ésta y cómo se distribuyen los bits de cada campo?",
+                    "respuesta": "Usa la estructura <samp>[Bits de Etiqueta][Bits de Línea][Bits de Posición]. Son necesarios 22 bits de dirección física de los cuales usa 16 bits de línea, 3 bits de posición, y los restantes 3 bits para etiqueta.</samp>",
+                    "explicacion": "Como es una Asociativa de 1 Vía, sabemos que su estructura siempre es [Etiqueta][Línea][Posición]. Luego, como la memoria es de 4MB, ya podemos saber que la estructura va a tener 22 bits de largo (4MB = 2^(22)). Como vemos que tiene 64K de líneas, también lo pasamos como potencia de 2 y nos da 2^16 (entonces se necesitarán 16 bits de línea). Luego decía que cada línea es de 8 bytes, es decir 2^3 (se necesitarán 3 bits de posición). Los bits de etiqueta son los bits restantes."
+                },
+                {
+                    "pregunta": "Para implementar una memoria de 256K x 16 usando chips de 16K x 8, indicar: ¿Cuántos chips se requieren?",
+                    "respuesta": "32 chips",
+                    "explicacion": "Se aplica la fórmula:<br> <samp>(256*16)/(16*8)=32</samp> <br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-ayuda-ej-banco-de-memoria?pid=25287#pid25287\">Fuente</a>"
+                },
+                {
+                    "pregunta": "¿Cuántos bits se utilizan para direccionar una palabra dentro del chip?",
+                    "respuesta": "14 bits",
+                    "explicacion": "Como el chip tiene 16K de celdas (o posiciones), necesitamos 14 bits para generar todas esas posiciones."
+                },
+                {
+                    "pregunta": "¿Cuántos bits se requieren para identificar el chip?",
+                    "respuesta": "5 bits",
+                    "explicacion": "Como hay 32 chips, se necesitan 2^5 combinaciones distintas, por eso se utilizan 5 bits. <br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-ayuda-ej-banco-de-memoria?pid=25287#pid25287\">Fuente</a>"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Cómo está formada la matriz de chips en filas por columnas?",
+                    "respuesta": "16Kx2",
+                    "explicacion": "Como tenemos las matrices 256K x 16 y 16K x 8, lo expresamos así (256K/16K) x (16/8) = 16 x 2<a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-ayuda-ej-banco-de-memoria?pid=25287#pid25287\">Fuente</a>"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Cuál es el valor hexadecimal de la primera y la última dirección expresados en hexadecimal?",
+                    "respuesta": ""
+                }
+            ]
+        },
+
+        {
+            "nombre": "Final 26/07/2016 (Tema 1)",
+            "preguntas": [
+                {
+                    "esSeparador": true,
                     "texto": "Indicar cuál es el concepto al que hace referencia cada uno de los párrafos incluídos a continuación"
                 },
                 {
@@ -259,10 +349,9 @@
                     "explicacion": "La dirección está dividida en Etiqueta - Línea - Posición. Si fuese totalmente asociativa sólo tendría Etiqueta-Posición. Si fuese asociativa de N vías tendría Etiqueta-Conjunto-Posición."
                 },
                 {
-                    "revision": true,
                     "pregunta": "¿Cuál es el tamaño de la línea de caché?",
                     "respuesta": "32 bytes",
-                    "explicacion": "Queremos saber cuál es el tamaño por cada línea de caché. Ya sabemos que el caché tiene 64 líneas (enunciado), nos falta saber el tamaño de la memoria caché.<br> En un modelo Asociativo de 1 Vía tenemos que el tamaño de la caché está dado por <samp>Memoria Principal / Memoria Caché = 2^(Bits de Etiqueta)</samp>. Ya sabemos que los bits de etiqueta son 13 (24 - Bits de Línea - Bits de Posición). Y de los puntos anteriores sabemos que la Memoria Principal tiene un tamaño de <samp>16MB</samp>. Planteamos entonces que <br><samp>2^24 / Memoria Caché = 2^13</samp> entonces <br><samp>2^24 / 2^13 = Memoria Caché</samp> por lo tanto <br><samp>2^11 = Memoria Caché</samp><br> Significa que la Memoria Caché tiene 2048 bytes de memoria. Como tenemos 64 líneas, nos queda que por línea tenemos 32 bytes.<br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-de-computadoras-resolucion-practicas-finales?pid=98032#pid98032\">Fuente</a>"
+                    "explicacion": "Lo define el campo posición. Como tenemos 5 bits, entonces vamos a tener 2^5 bytes, es decir 32 bytes."
                 },
                 {
                     "revision": true,
