@@ -176,6 +176,102 @@
                     "explicacion": "Calculamos la dirección física primero de lo que tenemos <code>AB55 x 10 + 0103 = AB653</code>. Si la próxima instrucción va a estar en <code>AB656</code>, significa que hay 3 bytes de diferencia. Como vemos que en la instrucción se están usando 2 bytes para representar el dato <code>AAAA</code>, sólo nos queda concluir que el byte restante es el <strong>código de operación</strong>."
                 }
             ]
+        },
+
+        {
+            "nombre": "Final 14/07/2015",
+            "preguntas": [
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "Indique el modo de direccionamiento necesario para inicializar una variable.",
+                    "respuesta": "Direccionamiento Inmediato",
+                    "explicacion": "Si pensamos fuera de los términos de assembler, recordaremos que para inicializar una variable necesitamos <strong>un valor</strong>. En el caso de assembler, cuando hablamos de valores en la misma instrucción, siempre estamos hablando de direccionamiento inmediato (es cuando el operando está en la misma instrucción)."
+                },
+                {
+                    "pregunta": "¿Cuál es la finalidad de los 'registros índice' en modo real y en modo protegido?",
+                    "respuesta": "Usar direccionamiento indexado.<br>Trabajar con cadenas de caracteres."
+                },
+                {
+                    "pregunta": "¿Cuál es el criterio que sustenta la alta probabilidad de acierto en una serie de instrucciones cache basado en la probabilidad de que el código de un ejecutable seguramente utiliza estructuras repetitivas?",
+                    "respuesta": "Vecindad Temporal"
+                },
+                {
+                    "pregunta": "La unidad del procesador asociada al intercambio de información con el bus (BIU), indique por lo menos una de sus funciones.",
+                    "respuesta": "Transfiere datos, recibe datos, coloca direcciones, etc",
+                    "explicacion": "En Pentium recordemos que el BUS no sólo se utiliza para transferir datos (operandos o instrucciones de la memoria) si no también para transferir direcciones. Podemos pensarlo como 'las autopistas' por donde se comunican los distintos módulos de una computadora (CPU con el Controlador de Caché, con la Memoria Principal, periféricos de E/S, etc...)"
+                },
+                {
+                    "pregunta": "Memoria ultrarrápida que guarda la direcciones de las últimas 32 páginas de código accedidas",
+                    "respuesta": "TLB (Tabla de Traducción de Direcciones Lineales)."
+                },
+                {
+                    "pregunta": "Exprese en Assembler el par de instrucciones relacionadas con el salto y retorno a un servicio de atención de interrupción.",
+                    "respuesta": "<code>INT n</code> (Interruption N) y <code>IRET</code> (Interruption Return)."
+                },
+                {
+                    "pregunta": "Represente los números binarios enteros signados de 3 bits para los números -7, +4, +2, -1 considere negativos de punto fijo en C2.",
+                    "respuesta": "-7 no se puede representar.<br>+4 no se puede representar.<br>+2 es <code>010</code>.<br>-1 es <code>111</code>.",
+                    "explicacion": "Como sólo tenemos 3 bits <em>para hacer maniobras</em>, y los negativos se representan con complemento a 2 (todo esto lo dice el enunciado), podemos representar los números entre -4 y 3."
+                },
+                {
+                    "pregunta": "Luego de una operación aritmética entre enteros signados se ha puesto en 1 la bandera V indicando condición de overflow. Justifique el motivo por el cual los números son de igual signo.",
+                    "respuesta": "Cuando los operandos tienen el mismo signo y el resultado da signo contrario, es porque se realizó una suma. Si es una resta, deberían ser operandos de distinto signo."
+                },
+                {
+                    "pregunta": "¿A qué se denomina el tiempo de búsqueda o Seek time y a qué el Tiempo de latencia?",
+                    "respuesta": "Seek Time es el tiempo que tarda un cabezal en llegar a la pista requerida desde su pista actual, y el Tiempo de Latencia es el tiempo que tarda en llegar hasta el sector que necesita leer una vez que está en la pista correcta."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Para el siguiente código Assembler teniendo en cuenta el valor inicial de los registros y si se ejecuta la instrucción <code>ADD AX, BX</code> responder las preguntas a continuación:<br><code>AX=001A BX=001C CX=001D DX=0000 SP=003C BP=0300 SI=0002 DI=0000</code><br><code>DS=0050 ES=0C98 SS=0060 CS=0400 IP=0103 NV UP EI PL NZ NA PO NC</code><br>Indicar el valor de AX luego de la ejecución de la instrucción.",
+                    "respuesta": "<code>0036</code>",
+                    "explicacion": "La instrucción <code>ADD</code> suma el valor del segundo operando hacia el primer operando."
+                },
+                {
+                    "pregunta": "Cuál es la dirección segmentada y física para acceder a la próxima instrucción si la actual ocupa 3 bytes.",
+                    "respuesta": "Segmentada:<code>0400:0106</code> <br>Física: <code>04103</code>",
+                    "explicacion": "Recordemos que la próxima instrucción a ejecutarse está dada por <code>CS:IP</code>. En este caso reemplazando por sus valores queda <code>0400:0103</code>. Esa es la dirección segmentada. Luego, para calcular la dirección física aplicamos la ya conocida fórmula <samp>Segmento * 10 + Desplazamiento</samp>, así que tendríamos en nuestro caso <code>0400 * 10 + 0103</code> lo cual da <code>04103</code>, esa es la dirección física."
+                },
+                {
+                    "pregunta": "Dada la siguiente instrucción <code>SUB AX, CX</code>, cuál será el valor del registro destino después de la ejecución del punto 1.",
+                    "respuesta": "0019",
+                    "explicacion": "Recordemos que en el punto 1 el registro <code>AX</code> quedó en 0036. La instrucción <code>SUB</code> resta valor del segundo operando al primer operando (que es un registro). Así que tendríamos que <code>0036</code> menos el valor de <code>CX</code> que es <code>001D</code>."
+                },
+                {
+                    "pregunta": "Convierta la instrucción del punto anterior a un modo de direccionamiento 'Indirecto por registro'",
+                    "respuesta": "<code>SUB AX, [CX]</code>",
+                    "explicacion": "Cuando hablamos de 'directo' e 'indirecto' hay que recordar que implican accesos a memoria principal. En este caso es indirecto porque estamos dando un desplazamiento sobre una base (los corchetes implican <em>el contenido de...</em>, no olvidar que cuando se ponen corchetes se está utilizando implícitamente <code>DS:Desplazamiento</code>) para obtener el contenido de algo en la memoria.<br>El desplazamiento está dado por el contenido de un registro, por eso es <em>Indirecto por Registro</em> (el contenido de la posición determinada por <code>DS</code> más el desplazamiento determinado por un registro).<br>En este caso al escribir <code>[CX]</code> en realidad se está utilizando <code>[0050:001D]</code>."
+                },
+                {
+                    "pregunta": "En una unidad de disco 10 cabezas lecto/grabadoras describen 18000 Círculos concéntricos en el soporte.<br> a) Cuántas superficies grabables hay; b) ¿Cómo se denominan los círculos concéntricos?",
+                    "respuesta": "Hay 10 superficies grabables. Los círculos concéntricos se llaman pistas."
+                },
+                {
+                    "pregunta": "¿Cuántos cilindros se describen?",
+                    "respuesta": "18000."
+                },
+                {
+                    "pregunta": "Para una memoria de palabra de 8 bits, indicar a cuantos bytes se pueden acceder con una dirección física de 31 bits.",
+                    "respuesta": "2GB",
+                    "explicacion": "Si tenemos 31 bits, y utilizamos 8 bits para cada byte, nos quedan 2GB (2^(31))."
+                },
+                {
+                    "pregunta": "Indique las instrucciones de transferencia de control para: Un salto incondicional, una interrupción, un salto a procedimiento (el punto es válido si están todas las instrucciones necesarias)",
+                    "respuesta": "Condicionales: <code>JZ</code>, <code>LOOP</code><br>Interrupciones: <code>INT n</code>, <code>INTO</code><br>Salto a Procedimiento: <code>JMP</code>, <code>CALL</code>"
+                },
+                {
+                    "pregunta": "Indique a que instrucción se vuelve luego de una excepción de tipo:<br>Trampa<br>Falta (con evento recuperable):",
+                    "respuesta": "Para Falta a la misma instrucción. Para Trampa, a la instrucción siguiente."
+                }
+            ]
         }
+
+
     ]
 }
