@@ -179,9 +179,96 @@
         },
 
         {
-            "nombre": "Final 26/07/2016",
+            "nombre": "Final 26/07/2016 (Tema 2)",
             "preguntas": [
-
+                {
+                    "esSeparador": true,
+                    "texto": "Indicar cuál es el concepto al que hace referencia cada uno de los párrafos incluídos a continuación"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Al conjunto de bits que acceden por vez a memoria se lo denomina...",
+                    "respuesta": "Byte, ya que es la unidad básica de Pentium."
+                },
+                {
+                    "pregunta": "La característica de los buses con que medimos la cantidad de bits que se transmiten por unidad de tiempo se denomina [...] y se puede medir en [...]",
+                    "respuesta": "Velocidad de transferencia y puede ser medido en MBits o Gbits."
+                },
+                {
+                    "pregunta": "Una aplicación que precise enviar y recibir datos de un dispositivo de E/S a memoria sin intervención del procesador utiliza un dispositivo...",
+                    "respuesta": "De E/S Programada."
+                },
+                {
+                    "pregunta": "Un arreglo unidimensional cuya función es apuntar a la primera instrucción del servicio de atención de una interrupción se denomina...",
+                    "respuesta": "<code>IDTR</code>",
+                    "explicacion": "La tabla IDT tiene su propio registro que apunta a la base de dicha tabla y es <code>IDTR</code>. Cuando hacemos <code>INT 4</code> por ejemplo, se utiliza implícitamente el registro <code>IDTR</code> con desplazamiento <samp>4</samp>, por ejemplo."
+                },
+                {
+                    "pregunta": "La segmentación-paginada obliga a que ambas unidades de la MMU estén activas para el <em>mapeo</em> de una dirección.",
+                    "respuesta": "Verdadero. Son requeridas ambas unidades.",
+                    "explicacion": "Es super rebuscada y mala leche esta pregunta, pero la MMU está formada por dos unidades la Unidad de Segmentación y la Unidad de Paginación. Cuando se mapea una dirección (por ejemplo, la CPU quiere información de la memoria principal), esta solicitud al recibirla la MMU primero se la pasa a la Unidad de Segmentación y luego a la Unidad de Paginación, recién ahí sabe cuál es la dirección física a la que debe dirigirse.<br> <a class=\"btn btn-success\" href=\"http://wiki.inf.utfsm.cl/index.php?title=Segmentaci%C3%B3n_y_ejemplos_de_utilizaci%C3%B3n#El_caso_Pentium\">Fuente</a>"
+                },
+                {
+                    "pregunta": "El rango del exponente en el formato de doble precisión del IEEE es (-1023;+1024).",
+                    "respuesta": "Falso. El rango es (-1022;+1023).",
+                    "explicacion": "<a class=\"btn btn-success\" href=\"https://en.wikipedia.org/wiki/IEEE_floating_point#Basic_and_interchange_formats\">Fuente</a>"
+                },
+                {
+                    "pregunta": "Una instrucción de 'llamada' o 'retorno' se clasifica como instrucción de salto o bifurcación.",
+                    "respuesta": "Falso. Son Instrucciones de Procedimientos (O Función)."
+                },
+                {
+                    "pregunta": "Una instrucción con formato <code>mnemónico reg2, reg1</code> es una instrucción que no requiere acceso a memoria principal.",
+                    "respuesta": "Verdadero. Está utilizando únicamente registros."
+                },
+                {
+                    "pregunta": "Una cuádruple palabra es un tipo de dato que hace referencia a 64 bits.",
+                    "respuesta": "Verdadero. Palabra son 2 bytes (16 bits), Cuádruple Palabra son 8 bytes (64 bits)."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "La siguiente secuencia de instrucciones forman parte de un programa en memoria en código máquina, su representación en assembler es la siguiente<br> <code>3B45:0103 MOV AH, 10</code><br> <code>3B45:0106 MOV AH, 12</code><br> Indicar dirección efectiva o física de la primer instrucción.",
+                    "respuesta": "3B153",
+                    "explicacion": "Fórmula para convertir a dirección física <samp>3B45 x 10 + 0103 = 3B153</samp>."
+                },
+                {
+                    "pregunta": "Modo de direccionamiento de las instrucciones y justificación.",
+                    "respuesta": "Las dos son inmediatas ya que el operando se encuentra en la instrucción."
+                },
+                {
+                    "pregunta": "Decir cuál será el valor binario del acumulador al terminar de ejecutarse la 2da instrucción.",
+                    "respuesta": "<code>1100 0000 0000 0000</code>",
+                    "explicacion": "La respuesta es medio mágica porque la segunda instrucció sólo está modificando la parte alta del acumulador (AH es el primer byte de AX), y le está poniendo el valor <samp>1100</samp>. No sabemos cuánto valía su parte baja antes de ejecutar esa instrucción (tampoco está esa información en el enunciado), así que asumimos que la parte baja estaba en <samp>0000</samp>."
+                },
+                {
+                    "pregunta": "La siguiente es la representación de los campos de una dirección física vista desde el controlador caché <br><code>[Bits de Etiqueta][Bits de Línea][5 bits de identificador de byte]</code> <br>La dirección física tiene en total 24 bits<br>Si la memoria caché tiene 64 líneas... Indicar la cantidad de bits para identificar la línea.",
+                    "respuesta": "6 bits.",
+                    "explicacion": "Como la memoria caché tiene 64 líneas, significa que se necesitan 64 valores distintos para diferenciarlos. Por lo tanto, necesitamos tantos bits para representar esos valores: 6 bits."
+                },
+                {
+                    "pregunta": "¿Cuál es el tamaño de la memoria principal?",
+                    "respuesta": "16MB",
+                    "explicacion": "Lo determina la dirección física de 24 bits."
+                },
+                {
+                    "pregunta": "¿Qué tipo de correspondencia/mapeo se aplica?",
+                    "respuesta": "Asociativa de 1 Vía",
+                    "explicacion": "La dirección está dividida en Etiqueta - Línea - Posición. Si fuese totalmente asociativa sólo tendría Etiqueta-Posición. Si fuese asociativa de N vías tendría Etiqueta-Conjunto-Posición."
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Cuál es el tamaño de la línea de caché?",
+                    "respuesta": "32 bytes",
+                    "explicacion": "Queremos saber cuál es el tamaño por cada línea de caché. Ya sabemos que el caché tiene 64 líneas (enunciado), nos falta saber el tamaño de la memoria caché.<br> En un modelo Asociativo de 1 Vía tenemos que el tamaño de la caché está dado por <samp>Memoria Principal / Memoria Caché = 2^(Bits de Etiqueta)</samp>. Ya sabemos que los bits de etiqueta son 13 (24 - Bits de Línea - Bits de Posición). Y de los puntos anteriores sabemos que la Memoria Principal tiene un tamaño de <samp>16MB</samp>. Planteamos entonces que <br><samp>2^24 / Memoria Caché = 2^13</samp> entonces <br><samp>2^24 / 2^13 = Memoria Caché</samp> por lo tanto <br><samp>2^11 = Memoria Caché</samp><br> Significa que la Memoria Caché tiene 2048 bytes de memoria. Como tenemos 64 líneas, nos queda que por línea tenemos 32 bytes.<br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-de-computadoras-resolucion-practicas-finales?pid=98032#pid98032\">Fuente</a>"
+                },
+                {
+                    "revision": true,
+                    "pregunta": "¿Cuál es el tamaño del bloque en memoria principal, si el bus de datos tiene 256 líneas y el bloque se transfiere en una sola ráfaga?",
+                    "respuesta": ""
+                }
             ]
         },
 
