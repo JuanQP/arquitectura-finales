@@ -489,20 +489,19 @@
                     "respuesta": "Escritura Diferida"
                 },
                 {
-                    "revision": true,
                     "pregunta": "Indique cuatro datos que deben almacenarse en un disco relacionados con la administración del sistema de archivos y que en general se encuentra en el sector de arranque.",
-                    "respuesta": ""
+                    "respuesta": "Número de bytes por sector. Cantidad de sectores por cluster. Cantidad de sectores por pista. Cantidad de cabezas lectograbadoras.",
+                    "explicacion": "Unidad 9.9 del Libro de Quiroga 'Administración de Memorias Externas' (Página 249)"
                 },
                 {
                     "revision": true,
                     "pregunta": "¿En qué TIPO/S de segmento/S tiene sentido el atributo que determina que debe ser escrito antes de ser sustituído?",
-                    "respuesta": "Segmentos de Código que están en ejecución.",
-                    "explicacion": ""
+                    "respuesta": ""
                 },
                 {
-                    "revision": true,
                     "pregunta": "Término usual (en inglés) del tiempo de cambio de cabeza lectora o grabadora en un disco de HDD",
-                    "respuesta": ""
+                    "respuesta": "Switch",
+                    "explicacion": "Pregunta super rebuscada y mala leche (en las 372 páginas del Libro Quiroga, sólo es mencionada 2 veces esa palabra). <br> Fuente: Libro de Quiroga, Unidad 12.2.3.2 (Página 293)"
                 },
                 {
                     "esSeparador": true,
@@ -524,21 +523,22 @@
                 },
                 {
                     "pregunta": "Un proceso se ejecuta en un sistema con memoria virtual con segmentos. ¿Cuántas páginas utiliza si el segmento de código es de 8193 bytes, el de datos es de 1125 bytes y la estructura de pila está definida como de 64 bytes?",
-                    "respuesta": "3,1,1 [Páginas]",
-                    "explicacion": "<a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-aporte-final-arquitectura-de-computadore-28-07-2015?pid=438218#pid438218\">Fuente</a>"
+                    "respuesta": "3 para el segmento de código, 1 para el de datos y 1 para el de pila [Páginas]",
+                    "explicacion": "Recordemos que en el modelo de segmentación paginado se usa la memoria de a <em>bloquecitos</em> de memoria los cuales son segmentos (no olvidemos que los segmentos tienen <strong>tamaño variable</strong>) que están conformados a su vez por páginas (las cuales recordemos que tienen <strong>tamaño fijo</strong>). El tamaño de estas páginas es de 4Kbytes, por lo cual, cada segmento <em>sólo puede crecer de a 4Kbytes</em> cada vez que sea necesario, pero por esta limitación (que las páginas siempre tienen 4Kbytes), un segmento no puede ser inferior a 4Kbytes (es decir, cuando un segmento sólo tiene 1 página). Para este caso particular podemos ver que el primer segmento es de 8193 bytes, para meter esto en un segmento, tendríamos que ver cuántas páginas harían falta. Obviamente no entra en una página (que tiene 4096 bytes), ni tampoco en dos páginas (8192 bytes) y sólamente por ese byte que nos falta, tenemos que utilizar una página más para poder meter todos esos 8193 bytes en el segmento (por lo cual el segmento queda conformado por 3 páginas). Luego, el de 1125 bytes ocupa un segmento de una página (su tamaño es inferior a 4096bytes) y finalmente la pila de 64 bytes también entra en un segmento de una página."
                 },
                 {
                     "pregunta": "¿Cuántos KBytes ocupa la imagen virtual?",
-                    "respuesta": "20 KB"
+                    "respuesta": "20 KB",
+                    "explicacion": "Esta pregunta viene en relación a lo anterior. Estamos utilizando 3 segmentos, el cual el primero tiene 3 páginas, el segundo 1 página y el último 1 página. Esto nos da 5 páginas en total. Como sabemos que las páginas tienen 4KBytes, entonces, estamos ocupando 20Kbytes de información (aún cuando no estén en uso todos esos bytes, ya están <em>reservados</em> (si se quiere decir) por esos segmentos paginados)."
                 },
                 {
-                    "revision": true,
                     "pregunta": "¿Qué atributos del segmento indican que está paginado, que fue modificado, que es de dato y que es de pila? (No exprese las siglas si no los términos que representan)",
-                    "respuesta": ""
+                    "respuesta": "El atributo (bit ó flag) de Granularidad indica que el segmento está dividido en páginas.<br> El atributo de tipo nos dice si es de código, dato o pila. <br> Por otra parte, en la tabla de páginas, el flag de Bit Sucio (Dirty Bit) es el que informa que una página fue modificada (no hay flags ni atributos que indiquen que un segmento en particular fue modificado)."
                 },
                 {
                     "pregunta": "Si se han cargado en el área local el segundo segmento de código, el de datos y la pila, ¿Cuánta memoria se ocupó?",
-                    "respuesta": "12288 bytes ó 12 kilobytes"
+                    "respuesta": "12288 bytes ó 12 kilobytes",
+                    "explicacion": "Está tan mal redactada la pregunta de este final que es imposible de entender a qué se refiere. Pero cuando dice 'segundo segmento de código' creo que se refiere a la 'segunda página' (porque hay un sólo segmento de código mencionado en todo el final).<br> Como recordamos, la segunda página del segmento de código tenía 4096 bytes, luego dice que también se cargan el segmento de datos (recordamos que tenía 1125bytes) y el de pila (64 bytes). En este caso, para cada segmento vamos a tener 1 página para cada uno, porque cada uno tiene 4096 bytes o menos, así que con una página para cada uno podemos contener cada segmento. Esto da como resultado 3 páginas en total, y como las páginas siempre son de 4KBytes, que la memoria total ocupada es 12Kbytes."
                 },
                 {
                     "pregunta": "Indique las instrucciones de transferencia de control para un salto incondicional, una interrupción, un salto a procedimiento (el punto es válido si están todas las instrucciones necesarias).",
