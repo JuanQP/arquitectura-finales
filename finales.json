@@ -362,6 +362,93 @@
         },
 
         {
+            "nombre": "Final 01/03/2016",
+            "preguntas": [
+                {
+                    "esSeparador": true,
+                    "texto": "Teórico"
+                },
+                {
+                    "pregunta": "Indique en el procesador estudiado en el modo denominado 'protegido' si el procesador tiene acceso a memoria RAM de solo 4 Giga direcciones. En caso afirmativo indique la cantidad de bits de la dirección física. En caso negativo indique como esta constituida la dirección segmentada.",
+                    "respuesta": "Si, tiene acceso a RAM de 4 Gigas de direcciones. Se necesitan 32 bits para generar dichas direcciones físicas."
+                },
+                {
+                    "pregunta": "Indique si es verdad que cuando un dispositivo externo avisa de una solicitud de atención sería posible que el programa actual continúe. En el caso que si continúe con el programa en curso indique que como la CPU lo determinaría, en caso que no continúe el programa en curso diga porqué.",
+                    "respuesta": "Si, puede continuar. Si es una interrupción mascarable, puede continuar si el flag IF (Interruption Flag) se encuentra en 1."
+                },
+                {
+                    "pregunta": "Indique en que número hexadecimal queda representado el numero +127 en un formato de coma fija de 8 bits con negativos complementados a 2.",
+                    "respuesta": "7F",
+                    "explicacion": "El número 127 es en binario <samp>0111 1111</samp>, como estamos usando números enteros de 8 bits con negativos complementados a dos, significa que sólo podemos hacer uso de 7 bits para represenar número, y el más significativo va a ser el signo. En este caso el número 127 podemos representarlo en 7 bits, así que es un número representable en este formato, porque nos quedaría el bit más a la izquierda para poner su signo. Si pasamos <samp>0111 1111</samp> a hexa nos queda <samp>7F</samp>."
+                },
+                {
+                    "pregunta": "Indique como se denomina la memoria interna de un subsistema cache que puede accederse comparando un argumento con cada una de las filas de la matriz.",
+                    "respuesta": "TLB (Translation Lookaside Buffer, o Tabla de Traducción de Direcciones Lineales).",
+                    "explicacion": "Es una tabla en la cual, al darle una etiqueta (un argumento), va a comparar dicha etiqueta con cada una de sus entradas para ver si existe."
+                },
+                {
+                    "pregunta": "Si una RAM está constituida por 256 K marcos de página y el tamaño de la pagina es de 4K Bytes, cuál es el tamaño de la memoria RAM.",
+                    "respuesta": "1GB",
+                    "explicacion": "Es una cuenta matemática. Si tiene 256K frames de página y cada página tiene 4 KBytes... Nos da 1GByte."
+                },
+                {
+                    "pregunta": "Indique si es verdad que existen sólo dos registros del procesador que se utilizan para determinar el campo desplazamiento de una dirección virtual, cuando se accede a una estructura alojada en el segmento SS. Si es negativo justifique. Si es afirmativo indique cuales. ",
+                    "respuesta": "Verdadero. Los registros son SS y SP."
+                },
+                {
+                    "pregunta": "Indique con si o con no, si es verdad que un dato numérico de tipo palabra doble se almacena en RAM según la técnica LITTLE_ENDIAN. Si es negativo justifique. Si es positivo de un ejemplo numérico en hexadecimal con ambos valores",
+                    "respuesta": "Si, en Big Endian AA BB CC DD, en Little Endian tendríamos DD CC BB AA.",
+                    "explicacion": "El tipo 'palabra' (o WORD) son 2 bytes. 'Palabra doble' son 4 bytes. Lo que pregunta este enunciado es si es posible almacenar en formato little endian un número de 4 bytes. Recordemos que para hacer esto tenemos que tener tamaños que sean 'divisibles' en bytes. En el ejemplo que dimos, se ve bien que es posible 'dar vuelta' esa secuencia de bytes para que queden almacenados en Little Endian."
+                },
+                {
+                    "pregunta": "Si el rango de direcciones (expresado en hexadecimal) de una memoria de m*8 es 00-FF cuál es el valor de m?",
+                    "respuesta": "256",
+                    "explicacion": "Es una forma rebuscada de preguntar: ¿Cuántas posiciones puede tener esta memoria si el rango de direcciones es de <samp>00</samp> hasta <samp>FF</samp>?."
+                },
+                {
+                    "revision": true,
+                    "pregunta": "Representación en potencias de dos del valor negativo a partir del cúal una operación con enteros de 128 bits da overflow",
+                    "respuesta": "",
+                    "explicacion": "No se entiende la pregunta. Pero parece dar por entendido que no hablamos de números enteros sin signo, si no de números enteros que contienen negativos también (Pero qué formato? Signados? Complementados a 2?)"
+                },
+                {
+                    "pregunta": "Para establecer la condición de desigualdad entre dos operandos ¿Qué operación entre los dos operandos realiza la unidad de cálculo?",
+                    "respuesta": "Resta (instrucción SUB)."
+                },
+                {
+                    "pregunta": "¿Qué bandera o banderas se consultan?",
+                    "respuesta": "El flag Z (informa si el resultado de la última operación fue 0)."
+                },
+                {
+                    "esSeparador": true,
+                    "texto": "Práctica"
+                },
+                {
+                    "pregunta": "Teniendo el siguiente estado <br> <code>AX=0000  BX=0001  CX=000A  DX=0000</code><br><code>SP=FFEE  BP=0000  SI=0000  DI=0000</code><br> <code>DS=1516  ES=1516  SP=FFEF CS=1516  IP=0100</code><br> ¿Cuáles y con qué valor se modifican los registros indicados abajo si se ejecutan las siguientes instrucciones?<br> <code>ADD AX, 0200</code><br> <code>SUB AX, FFFF</code><br> <code>PUSH AX</code>",
+                    "respuesta": "AX = 0200, AX=FDFF, SP=FFED",
+                    "explicacion": "En el primer caso, simplemente añadimos 0200 al registro AX.<br> En el segundo caso restamos a AX el valor FFFF, por lo cual va a dar un desborde negativo, por eso queda FDFF (es el resultado de 0200 - FFFF).<br> En el tercer caso ponemos el valor de AX en la pila, por eso el puntero a pila decrementa 2 unidades (recordemos que en IA32 el puntero se mueve de a dos unidades)."
+                },
+                {
+                    "pregunta": "Las instrucciones <code>MOV CX,DX</code> y <code>MOV DX,CX</code> se representan en código de máquina como  <samp>89D1</samp> y <samp>89CA</samp> respectivamente.<br> Si el formato de la correspondiente cadena binaria de cada instrucción es:<br> <code>[4bits de Verbo][6 bits de Modo de Direccionamiento][3bits registro fuente][3 bits registro destino]</code> <br> Identifique el valor HEXADECIMAL correspondiente al verbo.",
+                    "respuesta": "<samp>8</samp>",
+                    "explicacion": "Si en la primer instrucción que está representada por el código máquina <samp>89CA</samp> pasamos todo a binario nos da el siguiente resultado:<br> <code>1000 1001 1101 0001</code><br> De los cuales nos dice que los primeros 4 bits son el verbo <samp>1000</samp>. Si esto lo pasamos a hexa, nos da <samp>8</samp>."
+                },
+                {
+                    "pregunta": "Identifique el valor binario correspondiente a la identificación del registro CX y el correspondiente al registro DX",
+                    "respuesta": "Registro Fuente es <samp>010</samp> y el Registro Destino es <samp>001</samp>."
+                },
+                {
+                    "pregunta": "Indique si el modo de direccionamiento en es indexado",
+                    "respuesta": "Falso. Es directo por registro (va de registro a registro)."
+                },
+                {
+                    "pregunta": "Si se ejecutan consecutivamente cual es el valor final del registro",
+                    "respuesta": "Ambos registros terminan con el valor <samp>0000</samp>."
+                }
+            ]
+        },
+
+        {
             "nombre": "Final 09/12/2015",
             "preguntas": [
                 {
