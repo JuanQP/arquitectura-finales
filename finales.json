@@ -431,7 +431,7 @@
                 {
                     "pregunta": "Las instrucciones <code>MOV CX,DX</code> y <code>MOV DX,CX</code> se representan en código de máquina como  <samp>89D1</samp> y <samp>89CA</samp> respectivamente.<br> Si el formato de la correspondiente cadena binaria de cada instrucción es:<br> <code>[4bits de Verbo][6 bits de Modo de Direccionamiento][3bits registro fuente][3 bits registro destino]</code> <br> Identifique el valor HEXADECIMAL correspondiente al verbo.",
                     "respuesta": "<samp>8</samp>",
-                    "explicacion": "Si en la primer instrucción que está representada por el código máquina <samp>89CA</samp> pasamos todo a binario nos da el siguiente resultado:<br> <code>1000 1001 1101 0001</code><br> De los cuales nos dice que los primeros 4 bits son el verbo <samp>1000</samp>. Si esto lo pasamos a hexa, nos da <samp>8</samp>."
+                    "explicacion": "Si en la primer instrucción que está representada por el código máquina <samp>89CA</samp> pasamos todo a binario nos da el siguiente resultado:<br> <code>1000 1001 1101 0001</code><br> De los cuales el enunciado nos dice que los primeros 4 bits son el verbo <samp>1000</samp>. Si esto lo pasamos a hexa, nos da <samp>8</samp>."
                 },
                 {
                     "pregunta": "Identifique el valor binario correspondiente a la identificación del registro CX y el correspondiente al registro DX",
