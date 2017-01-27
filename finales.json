@@ -494,9 +494,9 @@
                     "explicacion": "Unidad 9.9 del Libro de Quiroga 'Administración de Memorias Externas' (Página 249)"
                 },
                 {
-                    "revision": true,
                     "pregunta": "¿En qué TIPO/S de segmento/S tiene sentido el atributo que determina que debe ser escrito antes de ser sustituído?",
-                    "respuesta": ""
+                    "respuesta": "En los que no son Segmentos de Código.",
+                    "explicacion": "En un final de 2014 hacían la pregunta inversa: en qué tipo de segmento <strong>NO</strong> tiene sentido ese atributo, y la respuesta era 'En los Segmentos de Código'. <br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-aporte-final-de-arquitectura-16-02-16-resuelto?pid=436486#pid436486\">Fuente</a>"
                 },
                 {
                     "pregunta": "Término usual (en inglés) del tiempo de cambio de cabeza lectora o grabadora en un disco de HDD",
