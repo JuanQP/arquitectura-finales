@@ -705,8 +705,8 @@
                 },
                 {
                     "pregunta": "Convierta la instrucción del punto anterior a un modo de direccionamiento 'Indirecto por registro'",
-                    "respuesta": "<code>SUB AX, [CX]</code>",
-                    "explicacion": "Cuando hablamos de 'directo' e 'indirecto' hay que recordar que implican accesos a memoria principal. En este caso es indirecto porque estamos dando un desplazamiento sobre una base (los corchetes implican <em>el contenido de...</em>, no olvidar que cuando se ponen corchetes se está utilizando implícitamente <code>DS:Desplazamiento</code>) para obtener el contenido de algo en la memoria.<br>El desplazamiento está dado por el contenido de un registro, por eso es <em>Indirecto por Registro</em> (el contenido de la posición determinada por <code>DS</code> más el desplazamiento determinado por un registro).<br>En este caso al escribir <code>[CX]</code> en realidad se está utilizando <code>[0050:001D]</code>."
+                    "respuesta": "<code>SUB AX, ((CX))</code>",
+                    "explicacion": "Cuando hablamos de 'directo' e 'indirecto' hay que recordar que implican accesos a memoria principal. En este caso es indirecto porque estamos dando una posición de memoria cuyo contenido es la posición donde está el contenido que buscamos. El libro de Quiroga utiliza esa sintaxis de <code>((registro))</code>"
                 },
                 {
                     "pregunta": "En una unidad de disco 10 cabezas lecto/grabadoras describen 18000 Círculos concéntricos en el soporte.<br> a) Cuántas superficies grabables hay; b) ¿Cómo se denominan los círculos concéntricos?",
