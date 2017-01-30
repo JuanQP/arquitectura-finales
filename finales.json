@@ -723,7 +723,7 @@
                 },
                 {
                     "pregunta": "Indique las instrucciones de transferencia de control para: Un salto incondicional, una interrupción, un salto a procedimiento (el punto es válido si están todas las instrucciones necesarias)",
-                    "respuesta": "Condicionales: <code>JZ</code>, <code>LOOP</code><br>Interrupciones: <code>INT n</code>, <code>INTO</code><br>Salto a Procedimiento: <code>JMP</code>, <code>CALL</code>"
+                    "respuesta": "Incondicional: <code>JMP</code><br>Interrupción: <code>INT n</code><br>Salto a Procedimiento: <code>CALL</code>"
                 },
                 {
                     "pregunta": "Indique a que instrucción se vuelve luego de una excepción de tipo:<br>Trampa<br>Falta (con evento recuperable):",
