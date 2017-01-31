@@ -23,7 +23,7 @@
                 {
                     "pregunta": "¿A qué hace referencia el concepto MODO directo por registro o de registro?",
                     "respuesta": "Es el modo de direccionamiento en el cual el operando (<em>el valor que se pasa a una instrucción</em>) se aloja en un registro de la CPU.",
-                    "explicacion": "Cuando usamos por ejemplo <code>MOV AX, BX</code>, estamos utilizando datos de <code>BX</code> que se encuentran en un registro, no estamos accediendo a memoria."
+                    "explicacion": "Cuando usamos por ejemplo <code>MOV AX, BX</code>, estamos utilizando datos de <code>BX</code> que se encuentran en un registro, se diferencia del direccionamiento directo 'común' en el hecho de que en nuestro caso usamos registros, los cuales son muchísimo más rápido de acceder que a los que se encuentran en memoria principal."
                 },
                 {
                     "pregunta": "Si el campo EDATA de una instrucción de 32 bits aloja un dato (modo inmediato) ¿Cuál es su valor máximo entero? Escríbalo en hexadecimal o en potencias de 2.",
@@ -163,7 +163,7 @@
                 {
                     "pregunta": "¿Qué valor tiene el bit G de Granularidad?",
                     "respuesta": "El flag estaría en <code>G=0</code>",
-                    "explicacion": "El <strong>flag de granularidad</strong> indica si el tamaño de los segmentos están en bytes ó en megabytes. Como el enunciado mismo decía que el segmento era de 4096bytes, entonces el flag G debería estar en 0."
+                    "explicacion": "El <strong>flag de granularidad</strong> indica si el campo 'tamaño' se refiere a bytes o a páginas. Como el enunciado mismo decía que era una memoria puramente segmentada, significa que no estamos hablando de páginas, si no de los tamaños en bytes, por lo tanto, el flag G debería estar en 0."
                 },
                 {
                     "pregunta": "Si la base alojada en su descriptor y expresada en hexadecimal es <code>32 42 70 00</code>. ¿Cuál es la dirección física que correspondería al último byte del segmento?",
@@ -187,7 +187,7 @@
                 },
                 {
                     "pregunta": "Con dos o tres palabras como máximo indique qué es un elemento de un vector de interrupciones (considérelo en modo real)",
-                    "respuesta": "Una Dirección Segmentada (CS:IP)",
+                    "respuesta": "Puntero a Rutina (Una dirección del tipo CS:IP)",
                     "explicacion": "En <strong>modo real</strong> las entradas del IDT (Tabla de Descriptores de Interrupción), poseen un CS y un IP que es el que va a determinar dónde está la rutina correspondiente a la interrupción que se produjo. En <strong>modo protegido</strong>, sin embargo, cada entrada es un descriptor de puerta que permite acceder al segmento donde se encuentra la rutina."
                 },
                 {
