@@ -276,9 +276,8 @@
                     "texto": "Indicar cuál es el concepto al que hace referencia cada uno de los párrafos incluídos a continuación"
                 },
                 {
-                    "revision": true,
                     "pregunta": "Al conjunto de bits que acceden por vez a memoria se lo denomina...",
-                    "respuesta": "Byte, ya que es la unidad básica de Pentium."
+                    "respuesta": "Palabra de Memoria."
                 },
                 {
                     "pregunta": "La característica de los buses con que medimos la cantidad de bits que se transmiten por unidad de tiempo se denomina [...] y se puede medir en [...]",
@@ -305,7 +304,7 @@
                 },
                 {
                     "pregunta": "Una instrucción de 'llamada' o 'retorno' se clasifica como instrucción de salto o bifurcación.",
-                    "respuesta": "Falso. Son Instrucciones de Procedimientos (O Función)."
+                    "respuesta": "Verdadero. Son instrucciones de salto (más específicamente 'de llamado a rutina')."
                 },
                 {
                     "pregunta": "Una instrucción con formato <code>mnemónico reg2, reg1</code> es una instrucción que no requiere acceso a memoria principal.",
@@ -383,8 +382,8 @@
                 },
                 {
                     "pregunta": "Indique como se denomina la memoria interna de un subsistema cache que puede accederse comparando un argumento con cada una de las filas de la matriz.",
-                    "respuesta": "TLB (Translation Lookaside Buffer, o Tabla de Traducción de Direcciones Lineales).",
-                    "explicacion": "Es una tabla en la cual, al darle una etiqueta (un argumento), va a comparar dicha etiqueta con cada una de sus entradas para ver si existe."
+                    "respuesta": "Memoria de Etiquetas.",
+                    "explicacion": "Libro de Quiroga, Unidad 9.6, Página 217."
                 },
                 {
                     "pregunta": "Si una RAM está constituida por 256 K marcos de página y el tamaño de la pagina es de 4K Bytes, cuál es el tamaño de la memoria RAM.",
@@ -655,8 +654,9 @@
                     "respuesta": "Usar direccionamiento indexado.<br>Trabajar con cadenas de caracteres."
                 },
                 {
+                    "revision": true,
                     "pregunta": "¿Cuál es el criterio que sustenta la alta probabilidad de acierto en una serie de instrucciones cache basado en la probabilidad de que el código de un ejecutable seguramente utiliza estructuras repetitivas?",
-                    "respuesta": "Vecindad Temporal"
+                    "respuesta": "Especulación"
                 },
                 {
                     "pregunta": "La unidad del procesador asociada al intercambio de información con el bus (BIU), indique por lo menos una de sus funciones.",
