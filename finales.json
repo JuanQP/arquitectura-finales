@@ -320,8 +320,8 @@
                 },
                 {
                     "pregunta": "La siguiente secuencia de instrucciones forman parte de un programa en memoria en código máquina, su representación en assembler es la siguiente<br> <code>3B45:0103 MOV AH, 10</code><br> <code>3B45:0106 MOV AH, 12</code><br> Indicar dirección efectiva o física de la primer instrucción.",
-                    "respuesta": "3B153",
-                    "explicacion": "Fórmula para convertir a dirección física <samp>3B45 x 10 + 0103 = 3B153</samp>."
+                    "respuesta": "3B553",
+                    "explicacion": "Fórmula para convertir a dirección física <samp>3B45 x 10 + 0103 = 3B553</samp>."
                 },
                 {
                     "pregunta": "Modo de direccionamiento de las instrucciones y justificación.",
@@ -392,7 +392,7 @@
                 },
                 {
                     "pregunta": "Indique si es verdad que existen sólo dos registros del procesador que se utilizan para determinar el campo desplazamiento de una dirección virtual, cuando se accede a una estructura alojada en el segmento SS. Si es negativo justifique. Si es afirmativo indique cuales. ",
-                    "respuesta": "Verdadero. Los registros son SS y SP."
+                    "respuesta": "Verdadero. Los registros son SP y ESP."
                 },
                 {
                     "pregunta": "Indique con si o con no, si es verdad que un dato numérico de tipo palabra doble se almacena en RAM según la técnica LITTLE_ENDIAN. Si es negativo justifique. Si es positivo de un ejemplo numérico en hexadecimal con ambos valores",
