@@ -1,7 +1,7 @@
 {
     "finales": [
         {
-            "nombre": "Final 01/12/2016",
+            "descripcion": "Final 01/12/2016",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -90,7 +90,7 @@
         },
 
         {
-            "nombre": "Final 06/10/2016",
+            "descripcion": "Final 06/10/2016",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -179,7 +179,7 @@
         },
 
         {
-            "nombre": "Final 26/07/2016 (Tema 2)",
+            "descripcion": "Final 26/07/2016 (Tema 2)",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -217,7 +217,7 @@
                     "explicacion": "Si bien el rango de valores es 65536 valores distintos, la pregunta es por las direcciones posibles, es decir, los números de 0 a 2^(n)-1."
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "En una instrucción de una dirección un campo es el código de operación y el otro la referencia al dato (también puede ser el dato en modo de direccionamiento inmediato)",
                     "respuesta": "Falso. No necesariamente es <strong>una referencia</strong> a un dato. Al hacer <code>JMP 10000h</code>, utiliza la dirección para posicionarse en una cierta posición de memoria, pero no está yendo a buscar ningún dato."
                 },
@@ -255,13 +255,13 @@
                     "explicacion": "Como hay 32 chips, se necesitan 2^5 combinaciones distintas, por eso se utilizan 5 bits. <br> <a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-ayuda-ej-banco-de-memoria?pid=25287#pid25287\">Fuente</a>"
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "¿Cómo está formada la matriz de chips en filas por columnas?",
                     "respuesta": "16Kx2",
                     "explicacion": "Como tenemos las matrices 256K x 16 y 16K x 8, lo expresamos así (256K/16K) x (16/8) = 16 x 2<a class=\"btn btn-success\" href=\"http://www.utnianos.com.ar/foro/tema-arquitectura-ayuda-ej-banco-de-memoria?pid=25287#pid25287\">Fuente</a>"
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "¿Cuál es el valor hexadecimal de la primera y la última dirección expresados en hexadecimal?",
                     "respuesta": ""
                 }
@@ -269,7 +269,7 @@
         },
 
         {
-            "nombre": "Final 26/07/2016 (Tema 1)",
+            "descripcion": "Final 26/07/2016 (Tema 1)",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -353,7 +353,7 @@
                     "explicacion": "Lo define el campo posición. Como tenemos 5 bits, entonces vamos a tener 2^5 bytes, es decir 32 bytes."
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "¿Cuál es el tamaño del bloque en memoria principal, si el bus de datos tiene 256 líneas y el bloque se transfiere en una sola ráfaga?",
                     "respuesta": ""
                 }
@@ -361,7 +361,7 @@
         },
 
         {
-            "nombre": "Final 01/03/2016",
+            "descripcion": "Final 01/03/2016",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -405,7 +405,7 @@
                     "explicacion": "Es una forma rebuscada de preguntar: ¿Cuántas posiciones puede tener esta memoria si el rango de direcciones es de <samp>00</samp> hasta <samp>FF</samp>?."
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "Representación en potencias de dos del valor negativo a partir del cúal una operación con enteros de 128 bits da overflow",
                     "respuesta": "",
                     "explicacion": "No se entiende la pregunta. Pero parece dar por entendido que no hablamos de números enteros sin signo, si no de números enteros que contienen negativos también (Pero qué formato? Signados? Complementados a 2?)"
@@ -448,14 +448,14 @@
         },
 
         {
-            "nombre": "Final 09/12/2015",
+            "descripcion": "Final 09/12/2015",
             "preguntas": [
                 {
                     "esSeparador": true,
                     "texto": "Teórico"
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "Para la siguiente sentencia VECTOR(I)=3 indique por lo menos 2 registros de CPU que podrían estar implicados en el modo de direccionamiento de su correspondiente código máquina",
                     "respuesta": "<code>DS</code> (Segmento de Datos) y <code>SI</code> (Segmento de Índices)",
                     "explicacion": "El registro <code>SI</code> se utiliza para índices. Es probable que para apuntar a valores dentro de un vector sean necesarios los registros <code>DS</code> (segmento de datos) y un desplazamiento dado por <code>SI</code>."
@@ -477,7 +477,7 @@
                     "respuesta": "Consulta: <code>JZ</code> (salta a una instrucción si el flag Z es 0) y <code>JC</code> (salta a una instrucción si el flag de Carry es 1)<br>Modificación: <code>CLC</code> (clear carry, deja en 0 el flag de carry), <code>ADD</code> (al finalizar la suma actualiza varios flags como Z para saber si el resultado fue 0, o V para saber si hubo overflow)."
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "¿Hay alguna consideración que contemplar antes de sustituir una página almacenada en RAM cuyo contenido es CODIGO? Justifique.",
                     "respuesta": "Que no sea el código en ejecución. Porque no habría forma de saber cuál es la próxima instrucción."
                 },
@@ -542,7 +542,7 @@
         },
 
         {
-            "nombre": "Final 28/07/2015",
+            "descripcion": "Final 28/07/2015",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -594,7 +594,7 @@
                     "texto": "Práctica"
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "Sabiendo que una instrucción tiene un campo de referencia a memoria de 64bits... ¿Cuántos bits deben tener los registros de cálculo si se admite el modo de direccionamiento inmediato? ¿Por qué?",
                     "respuesta": ""
                 },
@@ -638,7 +638,7 @@
         },
 
         {
-            "nombre": "Final 14/07/2015",
+            "descripcion": "Final 14/07/2015",
             "preguntas": [
                 {
                     "esSeparador": true,
@@ -654,7 +654,7 @@
                     "respuesta": "Usar direccionamiento indexado.<br>Trabajar con cadenas de caracteres."
                 },
                 {
-                    "revision": true,
+                    "enRevision": true,
                     "pregunta": "¿Cuál es el criterio que sustenta la alta probabilidad de acierto en una serie de instrucciones cache basado en la probabilidad de que el código de un ejecutable seguramente utiliza estructuras repetitivas?",
                     "respuesta": "Especulación"
                 },
