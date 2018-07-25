@@ -1,22 +1,53 @@
 import * as React from 'react';
-import './App.css';
+import { IFinal } from '../models/IFinal';
+import AppFinalSeleccionadoView from './AppFinalSeleccionadoView';
+import NavbarFinales from './NavbarFinales';
 
-import logo from './logo.svg';
+interface IAppState {
+	togglerOpened: boolean;
+	finalSeleccionado: IFinal | null;
+}
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+interface IAppProps {
+	finales: IFinal[];
+}
+
+class App extends React.Component<IAppProps, IAppState> {
+	constructor(props: IAppProps) {
+		super(props);
+		this.handleFinalClick = this.handleFinalClick.bind(this);
+		this.handleTogglerClick = this.handleTogglerClick.bind(this);
+		this.state = {
+			finalSeleccionado: null,
+			togglerOpened: false,
+		};
+	}
+
+	public handleFinalClick(final: IFinal): void {
+		this.setState({
+			finalSeleccionado: final,
+		});
+	}
+
+	public handleTogglerClick() : void {
+		this.setState({
+			togglerOpened: true,
+		});
+	}
+
+	public render() {
+		return (
+			<div>
+				<NavbarFinales
+					finales={this.props.finales}
+					togglerOpened={this.state.togglerOpened}
+					onFinalClick={this.handleFinalClick}
+					onTogglerClick={this.handleTogglerClick}
+				/>
+				<AppFinalSeleccionadoView final={this.state.finalSeleccionado}/>
+			</div>
+		);
+	}
 }
 
 export default App;

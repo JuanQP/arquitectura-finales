@@ -1,12 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootswatch/dist/flatly/bootstrap.min.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/App';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+// tslint:disable-next-line:no-var-requires
+const finalesJson = require('./finales.json');
+
 ReactDOM.render(
-  <App />,
+  <App finales={finalesJson.finales}/>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
