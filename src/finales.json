@@ -843,12 +843,13 @@
                         {
                             "enRevision": false,
 							"pregunta": "En una unidad de disco 10 cabezas lecto/grabadoras describen 18000 Círculos concéntricos en el soporte.<br> a) Cuántas superficies grabables hay; b) ¿Cómo se denominan los círculos concéntricos?",
-                            "respuesta": "Hay 10 superficies grabables. Los círculos concéntricos se llaman pistas."
+                            "respuesta": "Hay 10 superficies grabables (si hay 10 cabezales, hay 10 superficies o caras distintas). Los círculos concéntricos se llaman pistas."
                         },
                         {
                             "enRevision": false,
 							"pregunta": "¿Cuántos cilindros se describen?",
-                            "respuesta": "18000."
+                            "respuesta": "1800.",
+                            "explicacion": "Los cilindros serían las pistas puestas 'una arriba de otra', formando justamente una figura cilíondrica"
                         },
                         {
                             "enRevision": false,
